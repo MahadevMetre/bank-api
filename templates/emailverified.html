@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verified</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px 50px;
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 1s ease-out;
+        }
+
+        .icon {
+            font-size: 60px;
+            color: #4caf50;
+            margin-bottom: 20px;
+            animation: bounce 1.5s infinite;
+        }
+
+        .message {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        .sub-message {
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .thank-you {
+            font-size: 16px;
+            color: #777;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Animation for sliding container in */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation for icon bounce effect */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="icon">&#9989;</div>
+    <div class="message">Your email has been verified <br>🎉 successfully!</div>
+    <div class="sub-message">Now you can go to Paydoh App and continue your account creation process. And Enjoy happy banking!</div>
+    <div class="sub-message">Thank you for verifying your email address!</div>
+    <div class="sub-message">you're all set to Open the Account on Paydoh App!</div>
+    <div class="thank-you">Thanks for your time!</div>
+</div>
+</body>
+</html>

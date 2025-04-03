@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package rpc;
+
+option go_package = "payment/rpc";
+
+service PaymentService {
+    rpc GetReceiptId (GatewayRequest) returns (GatewayServiceResponse) {};
+    rpc UpdatePaymentState (PaymentStatusRequest) returns (PaymentStatusResponse) {};
+    rpc GetDebitCardPaymentStatus(GetDebitCardPaymentStatusRequest) returns (GetDebitCardPaymentStatusResponse) {};
+}
+message GatewayRequest {
+    string gateway_id = 1;
+    string user_id = 2;
+    string application_id = 3;
+    string amount = 4;
+    string currency = 5;
+    string remarks = 6;
+    string payment_type = 7;
+}
+
+message PaymentStatusRequest {
+    string receipt_id = 1;
+    string transaction_id = 2;
+    uint32 status_id = 3;
+    string txn_status = 4;
+    string txn_timestamp = 5;
+}
+
+message GetDebitCardPaymentStatusRequest {
+    string user_id = 1;
+}
+
+message GatewayServiceResponse {
+    GatewayServiceData data = 1;
+    uint64 status = 2;
+    string message = 3;
+}
+
+message GatewayServiceData {
+    string receipt_id = 1;
+    string order_id = 2;
+}
+
+message PaymentStatusResponse {
+    PaymentStatusData data = 1;
+    uint64 status = 2;
+    string message = 3;
+}
+
+message PaymentStatusData {
+    string receipt_id = 1;
+    string order_id = 2;
+    string txn_status = 3;
+    string remarks = 4;
+}
+
+message GetDebitCardPaymentStatusResponse {
+    repeated GetDebitCardPaymentStatusData data = 1;
+    uint64 status = 2;
+    string message = 3;
+}
+
+message GetDebitCardPaymentStatusData {
+    string receipt_id = 1;
+    string order_id = 2;
+    string transaction_id = 3;
+    string txn_timestamp = 4;
+    int64 gateway_id = 5;
+    string user_id = 6;
+    string application_id = 7;
+    string amount = 8;
+    string currency = 9;
+    string remarks = 10;
+    string payment_type = 11;
+    int32 status_id = 12;
+    string txn_status = 13;
+}

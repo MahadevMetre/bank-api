@@ -1,0 +1,5084 @@
+basePath: /
+definitions:
+  requests.AccountCreateCallbackRequest:
+    properties:
+      ApplicationId:
+        type: string
+      CbsStatus:
+        items:
+          $ref: '#/definitions/requests.CBSStatus'
+        type: array
+      serviceName:
+        type: string
+    required:
+    - ApplicationId
+    - serviceName
+    type: object
+  requests.AddPaymentStatusRequest:
+    properties:
+      receipt_id:
+        type: string
+      transaction_id:
+        type: string
+      transaction_status:
+        type: string
+    required:
+    - receipt_id
+    - transaction_id
+    - transaction_status
+    type: object
+  requests.AuthenticationRequest:
+    properties:
+      crc_value:
+        type: string
+      data:
+        type: string
+    required:
+    - data
+    type: object
+  requests.AuthorizationRequest:
+    properties:
+      mobile_number:
+        maxLength: 10
+        minLength: 10
+        type: string
+      user_id:
+        type: string
+    required:
+    - mobile_number
+    type: object
+  requests.CBSStatus:
+    properties:
+      AccountNo:
+        type: string
+      ApplicantId:
+        type: string
+      CustomerId:
+        type: string
+      Status:
+        type: string
+      message:
+        type: string
+      succErrCode:
+        type: string
+    type: object
+  requests.CbsStatus:
+    properties:
+      ApplicationNumber:
+        type: string
+      ErrorCode:
+        type: string
+      ErrorMessage:
+        type: string
+      RetryFlag:
+        type: string
+      Status:
+        type: string
+      TransactionId:
+        type: string
+      UTR_Ref_Number:
+        type: string
+    type: object
+  requests.CommunicationAddress:
+    properties:
+      city:
+        type: string
+      house_no:
+        type: string
+      landmark:
+        type: string
+      locality:
+        type: string
+      pin_code:
+        type: string
+      state:
+        type: string
+      street_name:
+        type: string
+    type: object
+  requests.CreateBankAccountRequest:
+    properties:
+      ProfessionCode:
+        type: string
+      annual_turn_over:
+        type: string
+      communication_address:
+        $ref: '#/definitions/requests.CommunicationAddress'
+      country_residence:
+        type: string
+      customer_education:
+        type: string
+      is_addr_same_as_aadhaar:
+        type: boolean
+      marital_status:
+        type: string
+      mother_maiden_name:
+        type: string
+      nationality:
+        type: string
+    required:
+    - ProfessionCode
+    - annual_turn_over
+    - country_residence
+    - customer_education
+    - marital_status
+    - mother_maiden_name
+    - nationality
+    type: object
+  requests.EncryptedRequest:
+    properties:
+      crc_value:
+        type: string
+      data:
+        type: string
+    type: object
+  requests.ForgotMpinResetRequest:
+    properties:
+      account_number:
+        type: string
+      email:
+        type: string
+      mother_maiden_name:
+        type: string
+      pin_code:
+        type: string
+    required:
+    - account_number
+    - email
+    - mother_maiden_name
+    - pin_code
+    type: object
+  requests.IncomingVcipData:
+    properties:
+      AadharReferenceNo:
+        type: string
+      ApplicantId:
+        type: string
+      AuditorRejectRemarks:
+        type: string
+      FirstName:
+        type: string
+      LastName:
+        type: string
+      MiddleName:
+        type: string
+      MobileNo:
+        maxLength: 10
+        minLength: 10
+        type: string
+      PaNNumber:
+        type: string
+      VKYCAuditStatus:
+        type: string
+      VKYCCompletion:
+        type: string
+    required:
+    - AadharReferenceNo
+    - ApplicantId
+    - AuditorRejectRemarks
+    - FirstName
+    - LastName
+    - MiddleName
+    - MobileNo
+    - PaNNumber
+    - VKYCAuditStatus
+    - VKYCCompletion
+    type: object
+  requests.KycAuditRequestData:
+    properties:
+      ApplicantId:
+        type: string
+      AuditRejectReason:
+        type: string
+      CallBackName:
+        type: string
+      MobileNo:
+        type: string
+      ProductType:
+        type: string
+      SourcedBy:
+        type: string
+      UserId:
+        type: string
+      VKYCAuditStatus:
+        type: string
+    type: object
+  requests.KycConsentRequest:
+    properties:
+      aadhar_consent:
+        type: boolean
+      aadhar2_consent:
+        type: boolean
+      address_change_consent:
+        type: boolean
+      indian_resident:
+        type: boolean
+      location_consent:
+        type: boolean
+      nomination_consent:
+        type: boolean
+      not_politically_exposed:
+        type: boolean
+      physical_card_consent:
+        type: boolean
+      privacy_policy_consent:
+        type: boolean
+      terms_and_condition:
+        type: boolean
+      virtual_card_consent:
+        type: boolean
+    type: object
+  requests.MpinRequest:
+    properties:
+      mpin:
+        type: string
+    required:
+    - mpin
+    type: object
+  requests.PaymentCallbackRequestData:
+    properties:
+      ApplicationId:
+        type: string
+      CallBackName:
+        type: string
+      CbsStatus:
+        items:
+          $ref: '#/definitions/requests.CbsStatus'
+        type: array
+      ProductType:
+        type: string
+      SourcedBy:
+        type: string
+      serviceName:
+        type: string
+    type: object
+  requests.PersonalInformationRequest:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      gender:
+        enum:
+        - male
+        - female
+        - other
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+    required:
+    - date_of_birth
+    - email
+    - first_name
+    - gender
+    - last_name
+    type: object
+  requests.ResetMpinRequest:
+    properties:
+      existing_mpin:
+        type: string
+      new_mpin:
+        type: string
+    required:
+    - existing_mpin
+    - new_mpin
+    type: object
+  requests.RewardsRequest:
+    properties:
+      amount:
+        type: number
+      benf_user_id:
+        type: string
+      remark:
+        type: string
+      tran_id:
+        type: string
+    required:
+    - amount
+    - benf_user_id
+    - remark
+    - tran_id
+    type: object
+  requests.UpdateMpinRequest:
+    properties:
+      mpin:
+        type: string
+    required:
+    - mpin
+    type: object
+  requests.VerifyEmailReq:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      userId:
+        type: string
+    required:
+    - email
+    - name
+    type: object
+  responses.MobileTeamErrorResponse:
+    properties:
+      error:
+        properties:
+          errors:
+            properties:
+              body:
+                type: string
+            type: object
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  responses.MobileTeamSuccessResponse:
+    properties:
+      data:
+        type: string
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  responses.MobileTeamSuccessResponseWithoutData:
+    properties:
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+host: localhost:4100
+info:
+  contact:
+    email: it@paydoh.money
+    name: Paydoh
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Paydoh bank api
+  version: "1.0"
+paths:
+  /api/address/get-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - address apis
+  /api/address/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - address apis
+  /api/authenticated/current-user:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - authorization apis
+  /api/authenticated/current-user-mobile:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - authorization apis
+  /api/authentication/initiate-sim-verification/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Authentication Request
+        in: body
+        name: authenticationRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.AuthenticationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api get message token by sending encrypted data and crc value
+      tags:
+      - Authentication api
+  /api/authentication/logout:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: User logout
+      tags:
+      - Authentication api
+  /api/authentication/sim-verification-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Authentication api
+  /api/authorization/:
+    post:
+      consumes:
+      - application/json
+      description: Using the mobile_number get the authorization token for the other
+        apis.
+      parameters:
+      - description: Authorization Request
+        in: body
+        name: authorizationRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.AuthorizationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api get authorization Token for all the api
+      tags:
+      - authorization apis
+  /api/beneficiary/add-beneficiary:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Create beneficiary
+      tags:
+      - Beneficiary API
+  /api/beneficiary/beneficiary-otp:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Validate add beneficiary otp
+      tags:
+      - Beneficiary API
+  /api/beneficiary/payment:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to make payment request
+      tags:
+      - Beneficiary API
+  /api/beneficiary/payment-otp:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to make payment request
+      tags:
+      - Beneficiary API
+  /api/beneficiary/quick-transfer-template:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: QuickTransferTemplate Api to make payment using quick transfer
+      tags:
+      - Beneficiary API
+  /api/beneficiary/search:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to search beneficiary
+      tags:
+      - Beneficiary API
+  /api/consent/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Update consent
+      tags:
+      - Consent Api
+  /api/debitcard/detail:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Debit Card Detail
+      tags:
+      - DebitCard API
+  /api/debitcard/generate:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Generate Debit Card
+      tags:
+      - DebitCard API
+  /api/debitcard/get-card-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Get Card Status
+      tags:
+      - DebitCard API
+  /api/debitcard/get-limit-list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Get Transaction Limit
+      tags:
+      - DebitCard API
+  /api/debitcard/set-card-status:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Set Card Status
+      tags:
+      - DebitCard API
+  /api/debitcard/set-debitcard-pin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Set Debit Card Pin
+      tags:
+      - DebitCard API
+  /api/debitcard/set-txn-limit:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Set Transaction Limit
+      tags:
+      - DebitCard API
+  /api/debitcard/track-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Track Debit Card Status
+      tags:
+      - DebitCard API
+  /api/debitcard/verify-otp:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to Verify Debit Card Pin
+      tags:
+      - DebitCard API
+  /api/demographic_module/fetch:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get demographic data
+      tags:
+      - Demographic APIS
+  /api/email/sendverification:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Send verification email
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/requests.VerifyEmailReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to send verification email
+      tags:
+      - Mail API
+  /api/email/update-verify/:id:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to verify email
+      tags:
+      - Mail API
+  /api/email/verification-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to check email verification status
+      tags:
+      - Mail API
+  /api/faq/list:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the list of frequently asked questions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Get FAQ list
+      tags:
+      - FAQ
+  /api/get-secrets:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get secrets
+      tags:
+      - Static parameters Api
+  /api/kyc/consent:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get kyc consent
+      tags:
+      - KYC Apis
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Request Body Data
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/requests.KycConsentRequest'
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to update kyc consent
+      tags:
+      - KYC Apis
+  /api/kyc/get-update:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - text/html
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "301":
+          description: Moved Permanently
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get vcip url
+      tags:
+      - KYC Apis
+  /api/kyc/vcip-url:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - text/html
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "301":
+          description: Moved Permanently
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get vcip url
+      tags:
+      - KYC Apis
+  /api/nominee/add-nominee:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to add nominee, resend and retry otp
+      tags:
+      - Nominee apis
+  /api/nominee/fetch:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to fetch nominee
+      tags:
+      - Nominee API
+  /api/nominee/verify-otp:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to verify OTP
+      tags:
+      - Nominee apis
+  /api/onboarding/create-account:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      - description: Create Bank Account Request
+        in: body
+        name: createAccountRequest
+        schema:
+          $ref: '#/definitions/requests.CreateBankAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Create bank account
+      tags:
+      - Onboarding Apis
+  /api/onboarding/get-account-details:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      - description: Create Bank Account Request
+        in: body
+        name: createAccountRequest
+        schema:
+          $ref: '#/definitions/requests.CreateBankAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Create bank account
+      tags:
+      - Onboarding Apis
+  /api/onboarding/personal-information:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get updated personal information
+      tags:
+      - Onboarding Apis
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Request Body Data
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/requests.PersonalInformationRequest'
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to update personal information
+      tags:
+      - Onboarding Apis
+  /api/onboarding/pincode-details:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get pincode details
+      tags:
+      - Onboarding Apis
+  /api/onboarding/user-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: get user onboarding status
+      tags:
+      - Onboarding Apis
+  /api/open/cities/:state:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: state
+        in: path
+        name: state
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get cities form the state.
+      tags:
+      - Open Bank apis
+  /api/open/get-receipt-id:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get receipt id
+      tags:
+      - Open Bank apis
+  /api/open/ifsc-data/:bank:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: bank name
+        in: path
+        name: bank
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get ifsc data by bank.
+      tags:
+      - Open Bank apis
+  /api/open/ifsc-data/banks:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get ifsc banks.
+      tags:
+      - Open Bank apis
+  /api/open/ifsc-data/banks/:ifsc:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: ifsc code
+        in: path
+        name: ifsc
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get a single ifsc data by ifsc code.
+      tags:
+      - Open Bank apis
+  /api/open/payment-status:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get payment status.
+      tags:
+      - Open Bank apis
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Add payment status Request
+        in: body
+        name: addPaymentStatus
+        required: true
+        schema:
+          $ref: '#/definitions/requests.AddPaymentStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to add payment status
+      tags:
+      - Open Bank apis
+  /api/open/relations:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api get Notiminee relations.
+      tags:
+      - Open Bank apis
+  /api/open/reset-mpin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Add reset-mpin request
+        in: body
+        name: resetMpinRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.ResetMpinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to reset mpin
+      tags:
+      - Open Bank apis
+  /api/open/set-mpin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Add mpin request
+        in: body
+        name: setMpinRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.MpinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to set mpin
+      tags:
+      - Open Bank apis
+  /api/open/shipping-address:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get shipping address.
+      tags:
+      - Open Bank apis
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Document type
+        in: formData
+        name: documet_type
+        required: true
+        type: string
+      - description: Document
+        in: formData
+        name: document
+        required: true
+        type: file
+      - description: Address line 1
+        in: formData
+        name: address_line_1
+        required: true
+        type: string
+      - description: Street name
+        in: formData
+        name: street_name
+        required: true
+        type: string
+      - description: Locality
+        in: formData
+        name: locality
+        required: true
+        type: string
+      - description: Landmark
+        in: formData
+        name: landmark
+        type: string
+      - description: City
+        in: formData
+        name: city
+        required: true
+        type: string
+      - description: State
+        in: formData
+        name: state
+        required: true
+        type: string
+      - description: Pin code
+        in: formData
+        name: pin_code
+        required: true
+        type: string
+      - description: Country
+        in: formData
+        name: country
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to add shipping address
+      tags:
+      - Open Bank apis
+  /api/open/state:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api get states.
+      tags:
+      - Open Bank apis
+  /api/open/update-mpin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Update M-PIN after reset request
+        in: body
+        name: UpdateMpinRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.UpdateMpinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: API to reset forgotten M-PIN
+      tags:
+      - Open Bank APIs
+  /api/open/update-shipping-address:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Document type
+        in: formData
+        name: documet_type
+        type: string
+      - description: Document
+        in: formData
+        name: document
+        type: file
+      - description: Address line 1
+        in: formData
+        name: address_line_1
+        type: string
+      - description: Street name
+        in: formData
+        name: street_name
+        type: string
+      - description: Locality
+        in: formData
+        name: locality
+        type: string
+      - description: Landmark
+        in: formData
+        name: landmark
+        type: string
+      - description: City
+        in: formData
+        name: city
+        type: string
+      - description: State
+        in: formData
+        name: state
+        type: string
+      - description: Pin code
+        in: formData
+        name: pin_code
+        type: string
+      - description: Country
+        in: formData
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to update shipping address
+      tags:
+      - Open Bank apis
+  /api/open/verify-forgot-mpin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Add forgotten M-PIN reset request
+        in: body
+        name: forgotMpinRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.ForgotMpinResetRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: API to verify reset forgotten M-PIN
+      tags:
+      - Open Bank APIs
+  /api/open/verify-mpin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: Add mpin request
+        in: body
+        name: setMpinRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.MpinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to verify mpin
+      tags:
+      - Open Bank apis
+  /api/sms-received:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: With the sender
+        in: query
+        name: sender
+        required: true
+        type: string
+      - description: With the message
+        in: query
+        name: message
+        required: true
+        type: string
+      - description: With the operator
+        in: query
+        name: operator
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to verify sms
+      tags:
+      - Sms API
+  /api/statement/get-statement:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get bank statement
+      tags:
+      - Account statement Api
+  /api/static-parameters:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get static parameters
+      tags:
+      - Static parameters Api
+  /api/transaction/history:
+    post:
+      consumes:
+      - application/json
+      description: Api to get the transactions.
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get the transactions.
+      tags:
+      - transaction api
+  /api/transaction/history/get-details:
+    post:
+      consumes:
+      - application/json
+      description: Api to get the transactions.
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get the transactions.
+      tags:
+      - transaction api
+  /api/transaction/history/internal:
+    post:
+      consumes:
+      - application/json
+      description: Api to get the transactions.
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get the transactions.
+      tags:
+      - transaction api
+  /api/upi/aadhar-verification:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get aadhar verification otp linked to mobile number.
+      tags:
+      - Upi apis
+  /api/upi/account-balance:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to know or check account balance.
+      tags:
+      - Upi apis
+  /api/upi/change-upi-pin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to change upi pin.
+      tags:
+      - Upi apis
+  /api/upi/collect-count:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to collect count for money related to mobile number using upi for
+        split bill payment.
+      tags:
+      - Upi apis
+  /api/upi/collect-money:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to collect money related to mobile number using upi for split bill
+        payment.
+      tags:
+      - Upi apis
+  /api/upi/create-upi-id:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to create new upi vpa.
+      tags:
+      - Upi apis
+  /api/upi/fetch-account-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to fetch all bank accounts linked to mobile number.
+      tags:
+      - Upi apis
+  /api/upi/get-upi-token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to get upi token.
+      tags:
+      - Upi apis
+  /api/upi/get-upi-xml-token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to get upi xml token.
+      tags:
+      - Upi apis
+  /api/upi/pay-val-vpa:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to Validate VPA payment.
+      tags:
+      - Upi apis
+  /api/upi/pay-vpa:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to Pay with VPA.
+      tags:
+      - Upi apis
+  /api/upi/payeename:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to Get Payee Name.
+      tags:
+      - Upi apis
+  /api/upi/remapping-upi-id:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to remapping upi vpa.
+      tags:
+      - Upi apis
+  /api/upi/set-upi-pin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Api to Set new upi vpa pin.
+      tags:
+      - Upi apis
+  /api/upi/sim-binding-sms-verification:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to send user's upi mobile number for sim binding and sms verification.
+      tags:
+      - Upi apis
+  /api/upi/transaction-history:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get upi transaction details.
+      tags:
+      - Upi apis
+  /api/upi/transaction-id:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      - description: Encrypted Request
+        in: body
+        name: encryptedRequest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.EncryptedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Api to get upi transaction id.
+      tags:
+      - Upi apis
+  /api/user/get-details:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device IP
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the OS
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the OS version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: API to UserDetail
+      tags:
+      - UserDetail API
+  /api/webhook/kvb/kvb/kyc:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+      summary: Web hook for updating vcip data from onboarding
+      tags:
+      - Webhook Apis
+  /api/webhook/kvb/vcip:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Vcip data Request
+        in: body
+        name: vcipWebhookResquest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.IncomingVcipData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+      summary: Web hook for updating vcip data from onboarding
+      tags:
+      - Webhook Apis
+  /api/webhook/rewards-point:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Vcip data Request
+        in: body
+        name: vcipWebhookResquest
+        required: true
+        schema:
+          $ref: '#/definitions/requests.RewardsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Web hook for updating vcip data from onboarding
+      tags:
+      - Webhook Apis
+  /api/webhook/route-mobile:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Sender
+        in: query
+        name: sender
+        required: true
+        type: string
+      - description: Message
+        in: query
+        name: message
+        required: true
+        type: string
+      - description: Operator
+        in: query
+        name: operator
+        type: string
+      - description: Circle
+        in: query
+        name: circle
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Web hook for getting api senders mobile data from Route mobile.
+      tags:
+      - Route Mobile Web hook
+  /bank/callback/account-create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: API  key
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: request data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/requests.AccountCreateCallbackRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Account create callback API.
+      tags:
+      - CallBack API
+  /bank/callback/audit-complition:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: API  key
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: request data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/requests.KycAuditRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Kyc audit complition callback API.
+      tags:
+      - CallBack API
+  /bank/callback/kyc-update:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: API  key
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Kyc audit update callback API.
+      tags:
+      - CallBack API
+  /bank/callback/normal-payment:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: API  key
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: request data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/requests.PaymentCallbackRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponseWithoutData'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      summary: Account create callback API.
+      tags:
+      - CallBack API
+  /health:
+    get:
+      responses: {}
+      tags:
+      - Health API
+  /transactions/recent-users:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of recent transaction users
+      parameters:
+      - description: With the bearer started
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: With the device ip
+        in: header
+        name: X-Device-Ip
+        required: true
+        type: string
+      - description: With the os
+        in: header
+        name: X-OS
+        required: true
+        type: string
+      - description: With the os version
+        in: header
+        name: X-OS-Version
+        required: true
+        type: string
+      - description: With the lat long
+        in: header
+        name: X-Lat-Long
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/responses.MobileTeamSuccessResponse'
+        "400":
+          description: Error response for Bad Request
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+        "500":
+          description: Error response for Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.MobileTeamErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get recent transaction users
+      tags:
+      - transaction api
+schemes:
+- http
+- https
+swagger: "2.0"

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Statement</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      .container {
+        width: 100% !important;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 0 auto;
+      }
+      .image-container {
+        width: 100% !important;
+        background-color: #feffda;
+        text-align: right;
+        margin-bottom: 10px;
+      }
+
+      .logo {
+        display: inline-block;
+        height: 46px;
+        width: 160px;
+        margin-left: 16px;
+        margin-right: 4px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      .logo-right {
+        display: inline-block;
+        height: 38px;
+        width: 140px;
+        margin-left: 4px;
+        margin-right: 24px;
+        margin-bottom: 4px;
+      }
+
+      .header {
+        width: 95% !important;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .header-left {
+        float: left;
+        width: 45%;
+        border: 2px solid #32b59f;
+        border-radius: 24px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+      .header-right {
+        float: right;
+        width: 45%;
+        text-align: left;
+      }
+      .header-left p,
+      .header-left h3 {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .header-left h3 {
+        color: #0848a2;
+        font-weight: bold;
+      }
+      .header-right p {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .clear {
+        clear: both;
+      }
+      .account-details {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f3f3f3;
+      }
+      .account-statement-period {
+        width: 90.5% !important;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+        padding: 16px;
+        border: 2px solid #32b59f;
+        background-color: #f3f3f3;
+        border-radius: 8px;
+      }
+      table {
+        width: 94% !important;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        border: none;
+        border-bottom: 0.5px solid lightgray;
+      }
+      table th {
+        background-color: #e2f4fa;
+        font-weight: bold;
+        text-align: center;
+      }
+      table td {
+        background-color: #ffffff;
+        text-align: center;
+      }
+      table {
+        page-break-inside: auto;
+      }
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+
+      .icon {
+        height: 16px;
+        width: 16px;
+      }
+    </style>
+  </head>
+  <body style="border: 0; margin: 0" onload="subst()">
+    <div class="container">
+      <!-- top header -->
+      <div class="image-container">
+        <img
+          src="https://paydoh.s3.ap-south-1.amazonaws.com/bank_logo.png"
+          class="logo"
+        />
+        <img
+          src="https://paydoh.s3.ap-south-1.amazonaws.com/paydoh_logo.png"
+          class="logo-right"
+        />
+      </div>
+
+      <div class="header">
+        <div class="header-left">
+          <h3>{{ .UserName }}</h3>
+          <br />
+          <p>
+            <img
+              src="https://img.icons8.com/?size=100&id=73&format=png&color=335bff"
+              class="icon"
+            />
+            {{ .UserAddress }}
+          </p>
+          <p>
+            <img
+              src="https://img.icons8.com/?size=100&id=9660&format=png&color=335bff"
+              class="icon"
+            />
+            <strong> Phone:</strong> {{ .UserPhone }}
+          </p>
+          <p>
+            <img
+              src="https://img.icons8.com/?size=100&id=12580&format=png&color=335bff"
+              class="icon"
+            />
+            <strong> Email:</strong> {{ .UserEmail }}
+          </p>
+        </div>
+        <div class="header-right">
+          <p>
+            <strong>Account number:</strong><br />
+            <span style="color: blue">{{ .AccountNumber }}</span>
+          </p>
+          <p>
+            <strong>Account type:</strong><br />
+            {{ .AccountType }}
+          </p>
+          <p>
+            <strong>IFSC Code:</strong><br />
+            {{ .IFSC }}
+          </p>
+          <p>
+            <strong>Branch name:</strong><br />
+            {{ .BranchName }}
+          </p>
+          <p>
+            <strong>Branch address:</strong><br />
+            {{ .BranchAddress }}
+          </p>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <!-- Account Statement Period -->
+      <div class="account-statement-period">
+        <tr>
+          <th>
+            Account statement: {{ .StatementPeriodStart }} to {{
+            .StatementPeriodEnd }}
+          </th>
+        </tr>
+      </div>
+
+      <!-- Account Summary Table -->
+      <table>
+        <tr>
+          <th>Opening Balance</th>
+          <th>Money In</th>
+          <th>Money Out</th>
+          <th>Closing Balance</th>
+        </tr>
+        <tr>
+          <td>{{ .OpeningBalance }}</td>
+          <td>{{ .MoneyIn }}</td>
+          <td>{{ .MoneyOut }}</td>
+          <td>{{ .ClosingBalance }}</td>
+        </tr>
+      </table>
+
+      <!-- Transactions Table -->
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Transaction Details</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Balance</th>
+        </tr>
+        {{ range .Transactions }}
+        <tr>
+          <td>{{ .Date }}</td>
+          <td>{{ .Details }}</td>
+          <td>{{ .Credit }}</td>
+          <td>{{ .Debit }}</td>
+          <td>{{ .Balance }}</td>
+        </tr>
+        {{ end }}
+      </table>
+    </div>
+  </body>
+</html>
